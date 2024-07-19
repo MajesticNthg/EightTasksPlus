@@ -18,8 +18,5 @@ public class Cyberpunk203xPt3 {
         }
         return z;
     }
-    public static void main(String[] args) {
-        int[] activate = new int[] {1, 2, 3, 4, 5, 6, 7};
-        System.out.println(massdriver(activate));
-    }
 }
+
