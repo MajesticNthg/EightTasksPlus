@@ -21,10 +21,10 @@ public class Cyberpunk203xPt6FinalBoss_UPD {
         for (int x = 0; x < matrix.length; x++) {
             for (int y = 0; y < matrix[0].length; y++) {
                 if (y == 0) {
-                    subMatrix[x + 1][y + 1] = matrix[x][y];
+                    subMatrix[x + 1][y + 1] = matrix[x][y] + subMatrix[x][y + 1];
                 }
                 else {
-                    subMatrix[x + 1][y + 1] = matrix[x][y] + subMatrix[x + 1][y];
+                    subMatrix[x + 1][y + 1] = matrix[x][y] + subMatrix[x + 1][y] + subMatrix[x][y + 1] - subMatrix[x][y];
                 }
             }
         }
@@ -35,9 +35,7 @@ public class Cyberpunk203xPt6FinalBoss_UPD {
         enter_parameters[0] = x;
         enter_parameters[1] = y;
         enter_parameters[2] = size;
-        for (int i = 0; i < size; i++, y++) {
-            sum += subMatrix[y + 1][x + size] - subMatrix[y + 1][x];
-        }
+        sum += subMatrix[y][x] + subMatrix[y + size][x + size] - subMatrix[y + size][x] - subMatrix[y][x + size];
         if (sum >= max_sum) {
         max_sum = sum;
         System.arraycopy(enter_parameters, 0, correct_parameters, 0, 3);
